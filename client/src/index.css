@@ -13,6 +13,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  user-select: none;
 }
 
 a {
@@ -20,15 +21,27 @@ a {
   color: rgba(255, 255, 255, 0.87);
 }
 
+/*.like-button-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}*/
+
+.card button[type="submit"] {
+  background-color: transparent;
+  color: white;
+  position: absolute;
+  top: 5%;
+  left: 0.5%;
+} 
+
+
+
 .cancel {
   position: fixed;
   top: -1%;
   left: 0.8%;
   cursor: pointer;
-}
-
-body {
-  
 }
 
 .new-post {
@@ -50,6 +63,7 @@ body {
 
 .username {
   text-align: center;
+  margin-top: 30px;
 }
 
 .user-comment {
@@ -72,15 +86,14 @@ body {
   transition: .2s;
 }
 
-.card::before {
+/*.card::before {
   content: '';
   position: absolute;
   visibility: visible;
   bottom: -1px;
-  
   border: 10px solid transparent;
-  border-top: 10px solid black;
-}
+  border-top: 10px solid white;
+}*/
 
 .card::after {
   content: '';
@@ -125,7 +138,7 @@ body {
 
 }
 
-form {
+.user-form {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -133,14 +146,47 @@ form {
   gap: 20px;
 }
 
-button[type="submit"] {
-  height: 30px;
-  border-radius: 5px;
-  background-color: black;
+.creater {
+ background-color: black;
+ color: white;
+ border-radius: 5px;
+ height: 30px;
+ font-size: 15px;
+  font-weight: 900;
+  border: none;
+  cursor: pointer;
+}
+
+.likes-amount {
+  position: absolute;
+  top: -6%;
+  font-size: 13px;
+  z-index: 1;
+  color: red;
+}
+
+.data-badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: blue;
+  position: absolute;
+  top: 5%;
+}
+
+.btn {
+  margin-top: 55px;
+  background-color: transparent;
   color: white;
+  width: 0px;
+  height: 0px;
+  border-radius: 5px;
   font-weight: bolder;
   font-size: 15px;
   border: none;
   border: none;
   cursor: pointer;
+  z-index: 1;
 }
+
+

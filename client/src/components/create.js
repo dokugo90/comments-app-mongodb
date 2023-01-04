@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { TextField } from "@mui/material"
+import { TextField } from "@mui/material";
+import { Badge } from "@mui/material"
 
 export default function CreateUser() {
     const [username, setUsername] = useState("")
@@ -10,10 +11,10 @@ export default function CreateUser() {
     <>
     <a href='/'><h1 className='cancel'>X</h1></a>
     <div className='form-flex'>
-      <form action='/create' method="POST">
+      <form className='user-form' action='/create' method="POST">
       <TextField value={username} style={{color: "white"}} onChange={e => setUsername(e.target.value)} name='name' id="outlined-basic" label="Username" placeholder='Max 20 characters' variant="outlined" />
       <TextField value={usercomment} style={{color: "white"}} onChange={e => setComment(e.target.value)} name='comment' id="outlined-basic" label="Comment" placeholder='Max 300 characters' variant="outlined" />
-        <button type="submit">Submit</button>
+        <button className='creater' type="submit">Submit</button>
       </form>
       </div>
       {

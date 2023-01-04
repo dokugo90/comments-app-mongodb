@@ -32,6 +32,7 @@ var otherPersonSchema = mongoose.Schema({
 var userSchema = mongoose.Schema({
     name: String,
     comment: String,
+    likes: Number,
 })
 
 var personSchema = mongoose.Schema({
@@ -59,12 +60,36 @@ app.post('/create', (req, res) => {
             result: "Failed to post comment"
         });
     } else {
-        userAccount.insertMany([{name: req.body.name, comment: req.body.comment}])
+        userAccount.insertMany([{name: req.body.name, comment: req.body.comment, likes: 0}])
         res.render("success", {
             result: "Successfully posted comment"
         });
     }
     
 });
+
+//let prevLikes = 1;
+
+/*app.get('/like/:name', (req, res) => {
+    userAccount.findOne({name: req.params.name}, function(err, user) {
+        if (err) console.log(err);
+        let prevLikes = user.likes;
+    })
+});*/
+
+
+app.post('/like/:name', (req, res) => {
+    userAccount.findOneAndUpdate({name: req.params.name}, {$inc: {likes: 1}}, function(err) {
+        if (err) {
+            res.render("liked", {
+                result: "Failed to like post"
+            })
+        } else {
+            res.render("liked", {
+                result: "Successfully liked post"
+            })
+        }
+    })
+})
 
 app.listen(5000)

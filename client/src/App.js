@@ -31,6 +31,7 @@ export function PostsApp() {
       backend.push({
         name: res["users"][i].name,
         comment: res["users"][i].comment,
+        likes: res["users"][i].likes
       })
     }
     if (stateMan == "Got Data") {
@@ -57,9 +58,11 @@ export function PostsApp() {
     <div>
       <div className='post-container'>
       {
+        backend[0] != undefined ?
       backend.map((item, index) => (
-        <Card key={index} name={item.name} comment={item.comment} />
+        <Card key={index} name={item.name} comment={item.comment} likes={item.likes} />
         ))
+        : "Loading..."
     }
     </div>
     <a href='/#/post'><button className='new-post'>+</button></a>
